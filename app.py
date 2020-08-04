@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 
-MOLOCH_SUBGRAPH_URL="https://api.thegraph.com/subgraphs/name/molochventures/moloch"
+MOLOCH_SUBGRAPH_URL="https://api.thegraph.com/subgraphs/name/odyssy-automaton/metacartel-ventures-moloch-v2"
 QUERY={'query':"""{members{id,shares}}"""}
 
 def moloch():
