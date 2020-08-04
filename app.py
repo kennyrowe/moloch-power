@@ -6,14 +6,14 @@ import json
 app = Flask(__name__)
 
 MOLOCH_SUBGRAPH_URL="https://api.thegraph.com/subgraphs/name/odyssy-automaton/metacartel-ventures-moloch-v2"
-QUERY={'query':"""{members{id,shares}}"""}
+QUERY={'query':"""{members{memberAddress,shares}}"""}
 
 def moloch():
     request=requests.post(MOLOCH_SUBGRAPH_URL, json=QUERY)
     if request.status_code == 200:
         data = request.json()
         data = data['data']['members']
-        data = [(item['id'], int(item['shares'])) for item in data]
+        data = [(item['memberAddress'], int(item['shares'])) for item in data]
         return sorted(filter(lambda item: item[1]!=0, data), reverse=True, key=lambda item: item[1])
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
