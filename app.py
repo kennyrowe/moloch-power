@@ -62,4 +62,4 @@ def hello_world():
     return render_template('index.html', total=total, quota=quota, result=result)        
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
